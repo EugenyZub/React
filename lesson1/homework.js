@@ -19,7 +19,6 @@ let sponsors = {
 };
 
 function calcCash(own = 0) {
-    //own = own || 0;
     let everyCash = Array.prototype.slice.call(arguments);
     let total = own;
     for (let i = 0; i < everyCash[1].length; i++) {
@@ -36,7 +35,6 @@ const {eu:[a]} = sponsors;
 const {rus} = sponsors;
 
 function makeBusiness(owner, director = 'Victor', cash, emp) {
-    //director = director || 'Victor';
     let sumSponsors = eu.concat(rus, 'unexpected sponsor');
     console.log(`We have a business. Owner: ${owner}, director: ${director}. Our budget: ${cash}. And our employers: ${emp}`);
     console.log('And we have a sponsors: ');

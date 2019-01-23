@@ -8,23 +8,22 @@ const PostList = ({posts}) => {
     const elements = posts.map((item)=> {
         const {id, ...itemProps} = item;
 
-        // if (itemProps == null) {
+         if (itemProps.label != undefined) {
+            return (
+                //console.log(itemProps.label)
+                <li key={id} className='list-group-item'>
+                    <PostListItem {...itemProps} />
+                </li>
+            )
+        }
 
-        // } else {
-        //     return (
-        //         <li key={id} className='list-group-item'>
-        //             <PostListItem {...itemProps} />
-        //         </li>
-        //     )
-        // }
-
-        return (
-            <li key={id} className='list-group-item'>
-                <PostListItem {...itemProps} />
-                {/* label={item.label}
-                 important={item.important} */}
-            </li>
-        )
+        // return (
+        //     <li key={id} className='list-group-item'>
+        //         <PostListItem {...itemProps} />
+        //         {/* label={item.label}
+        //          important={item.important} */}
+        //     </li>
+        // )
     });
 
     return (

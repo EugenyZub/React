@@ -69,34 +69,37 @@ export default class App extends Component {
         }
     }
 
-    onToggleImportant(id) {
+    toggle(id, toggleOn) {
         this.setState(({data}) => {
             const index = data.findIndex(elem => elem.id === id);
-
             const old = data[index];
-            const newItem = {...old, important: !old.important};
 
-            const newArr = [ ...data.slice(0, index), newItem, ...data.slice(index + 1)];
-
-            return {
-               data: newArr
+            if(toggleOn == 'like') {
+                const newItem1 = {...old, like: !old.like};
+                const newArr1 = [ ...data.slice(0, index), newItem1, ...data.slice(index + 1)];//{...Всё что было в нашем объекте, перезапись объекта им же, но с инвертирующим значением}
+                return {
+                    data: newArr1
+                }
             }
+
+            if(toggleOn == 'important') {
+                const newItem1 = {...old, important: !old.important};
+                const newArr1 = [ ...data.slice(0, index), newItem1, ...data.slice(index + 1)];
+                return {
+                    data: newArr1
+                }
+            } 
         })
     }
 
+    onToggleImportant(id) {
+        const toggleOn = 'important';
+        this.toggle(id, toggleOn);      
+    }
+
     onToggleLiked(id) {
-        this.setState(({data}) => {
-            const index = data.findIndex(elem => elem.id === id);
-
-            const old = data[index];
-            const newItem = {...old, like: !old.like};
-
-            const newArr = [ ...data.slice(0, index), newItem, ...data.slice(index + 1)];
-
-            return {
-               data: newArr
-            }
-        })
+        const toggleOn = 'like';
+        this.toggle(id, toggleOn);
     }
 
     searchPost(items, term) {
@@ -150,7 +153,8 @@ export default class App extends Component {
                     posts={visiablePosts}
                     onDelete={this.deleteItem}
                     onToggleImportant={this.onToggleImportant}
-                    onToggleLiked={this.onToggleLiked}/>
+                    onToggleLiked={this.onToggleLiked}
+                    />
                 <PostAddForm
                     onAdd={this.addItem}/>
             </AppBlock>

@@ -30,14 +30,17 @@ const HeaderButton = styled.button`
     margin-left: 20px;
 `
 
-const Header = () => {
+const Header = ({onHidden}) => {
     return (
         <HeaderBlock>
             <HeaderTitle>
                 <a href="#">
                 Game of Thrones DB
                 </a>
-                <HeaderButton>клик</HeaderButton>
+                <HeaderButton
+                    onClick={() => onHidden()}>
+                    клик
+                </HeaderButton>
             </HeaderTitle>
             <HeaderLinks>
                 <li>

@@ -19,6 +19,7 @@ export default class App extends Component {
     }
 
     render () {
+        const {visible} = this.state;
         return (
             <> 
                 <Container>
@@ -27,7 +28,7 @@ export default class App extends Component {
                 <Container>
                     <Row>
                         <Col lg={{size: 5, offset: 0}}>
-                            {this.state.visible ? <RandomChar/> : null}
+                            {visible ? <RandomChar/> : null}
                         </Col>
                     </Row>
                     <Row>
